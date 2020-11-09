@@ -1,27 +1,46 @@
 import React from "react";
 import axios from "axios";
+import FolderItem from "./components/folderItem.js";
 import "./styles.css";
 
 export default class App extends React.Component {
   state = { arrOfElements: [] };
 
-  componentDidMount() {
+  handleDirChange(path) {
+
+    if (path === "/..") {
+      path = "/"
+    }
+    console.log("handleDirChangeCalled");
+    console.log("path supposed to be" + path);
     axios
       .get("/dirContents", {
         params: {
-          path: ".",
+          path: path,
         },
       })
       .then((response) => {
-        this.setState(response.data);
+        this.setState({
+          path: response.data.path,
+          arrOfElements: response.data.arrOfElements,
+        });
       });
+  }
+
+  popDirPath() {
+    let path = this.state.path
+
+  }
+
+  componentDidMount() {
+    this.handleDirChange(".");
   }
 
   render() {
     console.log(this.state);
     console.log(this.state["arrOfElements"]);
     return (
-      <div>
+      <div style={{ width: "100%" }}>
         <button
           onClick={() => {
             axios.get("/health").then((response) => {
@@ -34,39 +53,17 @@ export default class App extends React.Component {
 
         <button
           onClick={() => {
-            axios
-              .get("/dirContents", {
-                params: {
-                  path: "/",
-                },
-              })
-              .then((response) => {
-                this.setState(response.data);
-              });
+            this.handleDirChange(this.state.path + "/..");
           }}
         >
-          Click here
+          Go Up One Dir
         </button>
 
         <p> This is what the data says: </p>
         <p> {JSON.stringify(this.state)} </p>
 
         {this.state["arrOfElements"].map((element, index) => (
-          <button
-            onClick={() => {
-              axios
-                .get("/dirContents", {
-                  params: {
-                    path: "..",
-                  },
-                })
-                .then((response) => {
-                  this.setState(response.data);
-                });
-            }}
-          >
-            {element["fileName"]}
-          </button>
+          <FolderItem item={element} handleDirChange={this.handleDirChange} />
         ))}
       </div>
     );

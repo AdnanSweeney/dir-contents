@@ -16,6 +16,7 @@ app.get("/dirContents", (req, res) => {
   let dirname = req.query.path;
 
   let response = {
+      path: path.resolve(dirname),
       numFiles: 0,
       numDirectories: 0,
       totalFileSize: 0,
