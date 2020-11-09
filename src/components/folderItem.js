@@ -13,6 +13,18 @@ function FolderItem(props) {
       <div className={folderItemStyles.itemInfoWrapper}>
         <p> {props.item["fileSizeInMegabytes"]} MB </p>
         <p> {Date(props.item["fileLastModified"])} </p>
+        {props.item["isDirectory"] ? (
+          <button
+            onClick={() => {
+              props.handleDirChange(
+              props.path + "/" + props.item["fileName"]
+            )}}
+          >
+            Open Folder
+          </button>
+        ) : (
+          <div></div>
+        )}
       </div>
     </div>
   );

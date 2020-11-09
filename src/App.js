@@ -4,13 +4,13 @@ import FolderItem from "./components/folderItem.js";
 import "./styles.css";
 
 export default class App extends React.Component {
+  constructor () {
+    super();
+    this.handleDirChange = this.handleDirChange.bind(this);
+  }
   state = { arrOfElements: [] };
 
   handleDirChange(path) {
-
-    if (path === "/..") {
-      path = "/"
-    }
     console.log("handleDirChangeCalled");
     console.log("path supposed to be" + path);
     axios
@@ -27,11 +27,6 @@ export default class App extends React.Component {
       });
   }
 
-  popDirPath() {
-    let path = this.state.path
-
-  }
-
   componentDidMount() {
     this.handleDirChange(".");
   }
@@ -43,27 +38,14 @@ export default class App extends React.Component {
       <div style={{ width: "100%" }}>
         <button
           onClick={() => {
-            axios.get("/health").then((response) => {
-              alert("The response is " + response.data);
-            });
-          }}
-        >
-          Click here
-        </button>
-
-        <button
-          onClick={() => {
             this.handleDirChange(this.state.path + "/..");
           }}
         >
           Go Up One Dir
         </button>
 
-        <p> This is what the data says: </p>
-        <p> {JSON.stringify(this.state)} </p>
-
         {this.state["arrOfElements"].map((element, index) => (
-          <FolderItem item={element} handleDirChange={this.handleDirChange} />
+          <FolderItem item={element} handleDirChange={this.handleDirChange} path={this.state.path}/>
         ))}
       </div>
     );
