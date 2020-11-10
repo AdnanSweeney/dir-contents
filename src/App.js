@@ -47,7 +47,7 @@ export default class App extends React.Component {
       fileName: "thisIsFolder",
       fileSizeInBytes: "100",
       fileSizeInMegabytes: 12,
-      fileLastModified: "05-05-2020",
+      fileLastModified: "2020-11-09T05:48:36.490Z",
       isDirectory: true,
     };
 
@@ -61,6 +61,16 @@ export default class App extends React.Component {
         >
           MOVE UP A FOLDER
         </div>
+
+        <div className="fileLabelContainer">
+        <div className="fileLabelSection"> File Name </div>
+        <div className="fileLabelSection"> File Size </div>
+        <div className="fileLabelSection"> Date Last Modified </div>
+        <div className="fileLabelSection">  </div>
+
+        </div>
+
+
 
         {/* This is Just for styling TESTING */}
         <FolderItem

@@ -35,3 +35,20 @@ html {
     width: 25%;
     margin-bottom: 2em;
 }
+
+.fileLabelContainer {
+    height: 4em;
+    display: flex;
+    /* margin-bottom: 1em; */
+}
+
+.fileLabelSection {
+    display: flex;
+    align-items: center;
+    width: 25%;
+    color: gray;
+    padding-left: 2%;
+    padding-right: 2%;
+    color: #EFEDFD;
+    font-weight: 300;
+}

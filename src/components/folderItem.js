@@ -1,49 +1,30 @@
 import folderItemStyles from "./folderItem.module.css";
+import ItemSection from "./itemSection.js";
 
 function FolderItem(props) {
-  console.log("object.entries is");
-  console.log(Object.entries(props));
-  console.log("props is ");
-  console.log(props);
+
+  let fileNameText = props.item["fileName"]
+  let fileSizeText = props.item["fileSizeInMegabytes"] + " MB"
+  let fileLastModified = new Date(props.item["fileLastModified"]);
+  let fileLastModifiedText = fileLastModified.toLocaleString()
+
   return (
     <div className={folderItemStyles.itemContainer}>
 
-      <div
-        className={[
-          folderItemStyles.itemSection,
-          folderItemStyles.itemInfo,
-          folderItemStyles.itemName,
-        ].join(" ")}
-      >
-        {props.item["fileName"]}
-      </div>
-      <div
-        className={[
-          folderItemStyles.itemSection,
-          folderItemStyles.itemInfo,
-        ].join(" ")}
-      >
-        {props.item["fileSizeInMegabytes"]} MB
-      </div>
-      <div
-        className={[
-          folderItemStyles.itemSection,
-          folderItemStyles.itemInfo,
-        ].join(" ")}
-      >
-        {Date(props.item["fileLastModified"])}
-      </div>
+      <ItemSection text={fileNameText} classNames={folderItemStyles.itemName} />
+      <ItemSection text={fileSizeText} />
+      <ItemSection text={fileLastModifiedText} />
 
       <div
         className={[
           folderItemStyles.itemSection,
           folderItemStyles.dirButton,
-          "divButton"
+          "divButton",
         ].join(" ")}
         onClick={() => {
           props.handleDirChange(props.path + "/" + props.item["fileName"]);
         }}
-        style={{visibility: props.item["isDirectory"] ? "visible" : "hidden" }}
+        style={{ visibility: props.item["isDirectory"] ? "visible" : "hidden" }}
       >
         OPEN FOLDER
       </div>
