@@ -11,8 +11,8 @@ export default class App extends React.Component {
   state = { arrOfElements: [] };
 
   handleDirChange(path) {
-    console.log("handleDirChangeCalled");
-    console.log("path supposed to be" + path);
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+
     axios
       .get("/dirContents", {
         params: {
@@ -21,6 +21,9 @@ export default class App extends React.Component {
       })
       .then((response) => {
         this.setState({
+          totalFileSize: response.data.totalFileSize,
+          numFiles: response.data.numFiles,
+          numDirectories: response.data.numDirectories,
           path: response.data.path,
           arrOfElements: response.data.arrOfElements,
         });
@@ -53,27 +56,47 @@ export default class App extends React.Component {
 
     return (
       <div className="AppContainer" style={{ width: "100%" }}>
-        <div
-          className="divButton floatingButton"
-          onClick={() => {
-            this.handleDirChange(this.state.path + "/..");
-          }}
-        >
-          MOVE UP A FOLDER
+        <div className="title">Directory Content Information</div>
+        <div className="navBar">
+          <div
+            className="divButton floatingButton"
+            onClick={() => {
+              this.handleDirChange(this.state.path + "/..");
+            }}
+          >
+            MOVE UP A FOLDER
+          </div>
+          <div className="totalFileDataContainer">
+            <div className="fileStatsRow">
+              Number of Files in current directory:{" "}
+              <div className="fileStats">{this.state["numFiles"]}</div>
+            </div>
+            <div className="fileStatsRow">
+              Number of Folders in current directory:{" "}
+              <div className="fileStats">{this.state["numDirectories"]}</div>
+            </div>
+            <div className="fileStatsRow">
+              Total File Size:
+              <div className="fileStats">{this.state["totalFileSize"]} MB</div>
+            </div>
+            <div className="fileStatsRow">
+              Current Path:
+              <div className="fileStats">{this.state["path"]}</div>
+            </div>
+          </div>
         </div>
+
+        <hr />
 
         <div className="fileLabelContainer">
-        <div className="fileLabelSection"> File Name </div>
-        <div className="fileLabelSection"> File Size </div>
-        <div className="fileLabelSection"> Date Last Modified </div>
-        <div className="fileLabelSection">  </div>
-
+          <div className="fileLabelSection"> File Name </div>
+          <div className="fileLabelSection"> File Size </div>
+          <div className="fileLabelSection"> Date Last Modified </div>
+          <div className="fileLabelSection"> </div>
         </div>
 
-
-
         {/* This is Just for styling TESTING */}
-        <FolderItem
+        {/* <FolderItem
           item={testElement}
           handleDirChange={() => {
             alert("hello");
@@ -95,7 +118,7 @@ export default class App extends React.Component {
             alert("hello");
           }}
           path={this.state.path}
-        />
+        /> */}
         {/* This is Just for styling TESTING */}
 
         {this.state["arrOfElements"].map((element, index) => (

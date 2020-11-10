@@ -53,6 +53,8 @@ app.get("/dirContents", (req, res) => {
 
   response.arrOfElements = arrOfElements
 
+  response.totalFileSize /= 1000000.0;
+
   res.send(response);
 });
 
