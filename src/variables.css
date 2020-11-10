@@ -1,0 +1,18 @@
+:root {
+    --primaryLight: #9A8EF3;
+    --primaryMedium: #7161ef;
+    --primary: #5945ed;
+    --secondaryLight: #efedfd;
+    --secondaryMedium: gray;
+    --secondaryDark: #303030;
+}
+
+/* Different Theme */
+/* :root {
+    --primaryLight: #4054B2;
+    --primaryMedium: #28e087;
+    --primary: #21B970;
+    --secondaryLight: #efedfd;
+    --secondaryMedium: gray;
+    --secondaryDark: #303030;
+} */

@@ -1,11 +1,11 @@
 .itemContainer {
-    border: solid 2px #303030;
+    /* border: solid 2px var(--secondaryDark); */
     height: 4em;
     display: flex;
     margin-bottom: 1em;
     border-radius: 10px;
     overflow: hidden;
-    background-color: #EFEDFD;
+    background-color: var(--secondaryLight);
     box-shadow: 6px 6px 3px -1px rgba(0,0,0,0.50);
 }
 
@@ -20,22 +20,17 @@
 .itemInfo {
     margin-top: 1%;
     margin-bottom: 1%;
-    border-left: solid 1px gray;
-    color: gray;
+    border-left: solid 1px var(--secondaryMedium);
+    color: var(--secondaryMedium);
     overflow: hidden;
 }
 
 .itemName {
     border: none;
-    color: #303030;
+    color: var(--secondaryDark);
     font-weight: 600;
 }
 
 .dirButton {
-    border-left: solid 2px #303030;
-}
-
-.dirButton:hover {
-    background-color: #5945ED;
-
+    /* border-left: solid 2px var(--secondaryDark); */
 }

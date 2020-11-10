@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import FolderItem from "./components/folderItem.js";
+import "./variables.css";
 import "./styles.css";
 
 export default class App extends React.Component {
@@ -35,8 +36,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state);
-    console.log(this.state["arrOfElements"]);
 
     let testElement = {
       fileName: "file.txt",
@@ -56,78 +55,83 @@ export default class App extends React.Component {
 
     return (
       <div className="AppContainer" style={{ width: "100%" }}>
-        <div className="title">Directory Content Information</div>
-        <div className="navBar">
-          <div
-            className="divButton floatingButton"
-            onClick={() => {
-              this.handleDirChange(this.state.path + "/..");
-            }}
-          >
-            MOVE UP A FOLDER
-          </div>
-          <div className="totalFileDataContainer">
-            <div className="fileStatsRow">
-              Number of Files in current directory:{" "}
-              <div className="fileStats">{this.state["numFiles"]}</div>
+        <div>
+          <div className="title">Directory Content Information</div>
+          <div className="navBar">
+            <div
+              className="divButton floatingButton"
+              onClick={() => {
+                this.handleDirChange(this.state.path + "/..");
+              }}
+            >
+              MOVE UP A FOLDER
             </div>
-            <div className="fileStatsRow">
-              Number of Folders in current directory:{" "}
-              <div className="fileStats">{this.state["numDirectories"]}</div>
-            </div>
-            <div className="fileStatsRow">
-              Total File Size:
-              <div className="fileStats">{this.state["totalFileSize"]} MB</div>
-            </div>
-            <div className="fileStatsRow">
-              Current Path:
-              <div className="fileStats">{this.state["path"]}</div>
+            <div className="totalFileDataContainer">
+              <div className="fileStatsRow">
+                Number of Files in current directory:{" "}
+                <div className="fileStats">{this.state["numFiles"]}</div>
+              </div>
+              <div className="fileStatsRow">
+                Number of Folders in current directory:{" "}
+                <div className="fileStats">{this.state["numDirectories"]}</div>
+              </div>
+              <div className="fileStatsRow">
+                Total File Size:
+                <div className="fileStats">
+                  {this.state["totalFileSize"]} MB
+                </div>
+              </div>
+              <div className="fileStatsRow">
+                Current Path:
+                <div className="fileStats">{this.state["path"]}</div>
+              </div>
             </div>
           </div>
         </div>
 
         <hr />
+        <div>
+          <div className="fileLabelContainer">
+            <div className="fileLabelSection"> File Name </div>
+            <div className="fileLabelSection"> File Size </div>
+            <div className="fileLabelSection"> Date Last Modified </div>
+            <div className="fileLabelSection"> </div>
+          </div>
 
-        <div className="fileLabelContainer">
-          <div className="fileLabelSection"> File Name </div>
-          <div className="fileLabelSection"> File Size </div>
-          <div className="fileLabelSection"> Date Last Modified </div>
-          <div className="fileLabelSection"> </div>
-        </div>
-
-        {/* This is Just for styling TESTING */}
-        {/* <FolderItem
-          item={testElement}
-          handleDirChange={() => {
-            alert("hello");
-          }}
-          path={this.state.path}
-        />
-
-        <FolderItem
-          item={testElement}
-          handleDirChange={() => {
-            alert("hello");
-          }}
-          path={this.state.path}
-        />
-
-        <FolderItem
-          item={testFolder}
-          handleDirChange={() => {
-            alert("hello");
-          }}
-          path={this.state.path}
-        /> */}
-        {/* This is Just for styling TESTING */}
-
-        {this.state["arrOfElements"].map((element, index) => (
-          <FolderItem
-            item={element}
-            handleDirChange={this.handleDirChange}
+          {/* This is Just for styling TESTING */}
+          {/* <FolderItem
+            item={testElement}
+            handleDirChange={() => {
+              alert("hello");
+            }}
             path={this.state.path}
           />
-        ))}
+
+          <FolderItem
+            item={testElement}
+            handleDirChange={() => {
+              alert("hello");
+            }}
+            path={this.state.path}
+          />
+
+          <FolderItem
+            item={testFolder}
+            handleDirChange={() => {
+              alert("hello");
+            }}
+            path={this.state.path}
+          /> */}
+          {/* This is Just for styling TESTING */}
+
+          {this.state["arrOfElements"].map((element, index) => (
+            <FolderItem
+              item={element}
+              handleDirChange={this.handleDirChange}
+              path={this.state.path}
+            />
+          ))}
+        </div>
       </div>
     );
   }

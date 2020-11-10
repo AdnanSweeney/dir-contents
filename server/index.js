@@ -1,7 +1,6 @@
 const path = require("path");
 const express = require("express");
 const fs = require("fs");
-const { dir } = require("console");
 
 const app = express(); // create express app
 
