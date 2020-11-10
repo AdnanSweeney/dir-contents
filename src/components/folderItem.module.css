@@ -1,20 +1,40 @@
 .itemContainer {
-    width: 100%;
     border: solid 2px #303030;
-    height: 3em;
+    height: 4em;
     display: flex;
+    margin-bottom: 1em;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #EFEDFD;
+    box-shadow: 6px 6px 12px -1px rgba(0,0,0,0.50);
 }
 
-.itemKeyWrapper {
-    width: 50%;
+.itemSection {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
+    width: 25%;
 }
 
-.itemInfoWrapper {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+.itemInfo {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border-left: solid 1px gray;
     color: gray;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.itemName {
+    border: none;
+    color: #303030;
+    font-weight: 600;
+}
+
+.dirButton {
+    border-left: solid 2px #303030;
+}
+
+.dirButton:hover {
+    background-color: #5945ED;
+
 }

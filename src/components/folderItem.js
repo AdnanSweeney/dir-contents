@@ -7,24 +7,45 @@ function FolderItem(props) {
   console.log(props);
   return (
     <div className={folderItemStyles.itemContainer}>
-      <div className={folderItemStyles.itemKeyWrapper}>
-        <p> {props.item["fileName"]}</p>
+
+      <div
+        className={[
+          folderItemStyles.itemSection,
+          folderItemStyles.itemInfo,
+          folderItemStyles.itemName,
+        ].join(" ")}
+      >
+        {props.item["fileName"]}
       </div>
-      <div className={folderItemStyles.itemInfoWrapper}>
-        <p> {props.item["fileSizeInMegabytes"]} MB </p>
-        <p> {Date(props.item["fileLastModified"])} </p>
-        {props.item["isDirectory"] ? (
-          <button
-            onClick={() => {
-              props.handleDirChange(
-              props.path + "/" + props.item["fileName"]
-            )}}
-          >
-            Open Folder
-          </button>
-        ) : (
-          <div></div>
-        )}
+      <div
+        className={[
+          folderItemStyles.itemSection,
+          folderItemStyles.itemInfo,
+        ].join(" ")}
+      >
+        {props.item["fileSizeInMegabytes"]} MB
+      </div>
+      <div
+        className={[
+          folderItemStyles.itemSection,
+          folderItemStyles.itemInfo,
+        ].join(" ")}
+      >
+        {Date(props.item["fileLastModified"])}
+      </div>
+
+      <div
+        className={[
+          folderItemStyles.itemSection,
+          folderItemStyles.dirButton,
+          "divButton"
+        ].join(" ")}
+        onClick={() => {
+          props.handleDirChange(props.path + "/" + props.item["fileName"]);
+        }}
+        style={{visibility: props.item["isDirectory"] ? "visible" : "hidden" }}
+      >
+        OPEN FOLDER
       </div>
     </div>
   );

@@ -1,7 +1,37 @@
-* {
-    margin: 10px;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200&display=swap');
+div {
+    /* border: 1px solid red; */
 }
 
-div {
-    border: 1px solid red;
+html {
+    background-color: #9B90F4;
+    font-family: "Nunito";
+    font-size: 1.2em;
+
+}
+.AppContainer {
+    padding: 5%;
+    box-sizing: border-box;
+}
+
+.divButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #7161EF;
+    color: #EFEDFD;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.divButton:hover {
+    background-color: #5945ED;
+}
+
+.floatingButton {
+    border-radius: 10px;
+    border: solid 2px #303030;
+    height: 4em;
+    width: 25%;
+    margin-bottom: 2em;
 }
