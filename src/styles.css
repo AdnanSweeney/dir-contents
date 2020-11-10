@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200&display=swap");
 
-
 html {
   background-color: var(--primaryLight);
   font-family: "Nunito";
@@ -19,11 +18,10 @@ hr {
 }
 
 .title {
-    font-size: 2.3em;
-    margin-bottom: 1.5em;
-    font-weight: 600;
-    text-shadow: 2.4px 2.4px 1px rgba(0,0,0,0.50);
-
+  font-size: 2.3em;
+  margin-bottom: 1.5em;
+  font-weight: 600;
+  text-shadow: 2.4px 2.4px 1px rgba(0, 0, 0, 0.5);
 }
 
 .navBar {
@@ -41,19 +39,21 @@ hr {
   text-align: right;
   font-weight: 600;
   height: 80%;
-  text-shadow: 2px 2px 3px rgba(0,0,0,0.40);
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
   width: 60%;
 }
 
 .fileStatsRow {
-    display: flex;
+  display: flex;
+  white-space: nowrap;
+  overflow-x: auto;
 }
 
 .fileStats {
-    color: var(--primary);
-    font-weight: 700;
-    margin-left: 0.5em;
-    text-shadow: none;
+  color: var(--primary);
+  font-weight: 700;
+  margin-left: 0.5em;
+  text-shadow: none;
 }
 
 .divButton {
@@ -63,8 +63,7 @@ hr {
   background-color: var(--primaryMedium);
   font-weight: bold;
   cursor: pointer;
-  text-shadow: 2px 2px 2px rgba(0,0,0,0.40);
-
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 .divButton:hover {
@@ -76,8 +75,7 @@ hr {
   /* border: solid 2px var(--secondaryDark); */
   height: 4em;
   width: 25%;
-  box-shadow: 6px 6px 3px -1px rgba(0,0,0,0.40);
-
+  box-shadow: 6px 6px 3px -1px rgba(0, 0, 0, 0.4);
 }
 
 .fileLabelContainer {
@@ -92,6 +90,22 @@ hr {
   padding-left: 2%;
   padding-right: 2%;
   font-weight: 300;
-  text-shadow: 2px 2px 2px rgba(0,0,0,0.40);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
 
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar {
+  height: 5px;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  background-color: var(--primaryMedium);
 }
