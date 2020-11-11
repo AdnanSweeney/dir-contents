@@ -32,7 +32,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    this.handleDirChange(".");
+    this.handleDirChange("..");
   }
 
   render() {
